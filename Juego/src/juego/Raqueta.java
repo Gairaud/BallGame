@@ -37,18 +37,22 @@ public class Raqueta extends Actor{
         this.h = h;
     }
     
-    @Override
-    public void move (Rectangulo r){
     
-       if(x>750){
+    @Override
+    public void move (Model r){
+    
+       x = x +dx;
+       y = y +dy;
+       if(x>=r.r.getW()){
            dx = -dx;
        }
-       if(x<100){
+       if(x<=r.r.getX()){
+           
            dx = -dx;
+       
        }
      
-        x = x +dx;
-        y = y +dy;
+        
     
     }
 }

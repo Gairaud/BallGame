@@ -56,6 +56,6 @@ public abstract class Actor {
     public void setDy(int dy) {
         this.dy = dy;
     }
-    public abstract void move(Rectangulo r);
+    public abstract void move(Model m);
     
 }

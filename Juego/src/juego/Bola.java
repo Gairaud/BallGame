@@ -27,19 +27,32 @@ public class Bola extends Actor {
         
     }
     
-    public void  move (Rectangulo b){
-        if(x>b.getW()){
+    @Override
+    public void  move (Model b){
+        
+       
+        if((y<b.a.y) && (dy>0) && (y+t >= b.a.y) && (b.a.x<x+t && x-t < b.a.x + b.a.w)){
+            
+            dy = -dy;
+           
+        
+        }
+        if(x-(t*2)>=b.r.getH()||x-(t*2)<b.r.getX()){
             dx = -dx;
         
         }
-        if (y>b.getH()){
-        
+        if(y-(t*2)>=b.r.getW()||y-(t*2)<b.r.getY()){
             dy = -dy;
-            
-        } 
+        
+        }
+       
      
         x = x +dx;
         y = y +dy;
+        
+   
+     
+        
         
     
     
