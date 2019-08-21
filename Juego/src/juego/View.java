@@ -7,6 +7,7 @@ package juego;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.util.Observable;
 import javax.swing.JFrame;
 
@@ -21,7 +22,36 @@ public class View extends JFrame implements java.util.Observer {
     public View(){
         this.setSize(800,600);
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        this.addKeyListener(new java.awt.event.KeyAdapter(){
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                formKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt){
+                formKeyReleased(evt);
+            }
+        });
     }
+    private void formKeyPressed(java.awt.event.KeyEvent evt){
+        
+        switch(evt.getKeyCode()){
+            
+            case KeyEvent.VK_UP : controller.move(0); break;
+            case KeyEvent.VK_DOWN : controller.move(1); break;
+            case KeyEvent.VK_LEFT : controller.move(2); break;
+            case KeyEvent.VK_RIGHT : controller.move(3); break;
+            
+        }
+    }
+        
+    private void formKeyReleased(java.awt.event.KeyEvent evt){
+       int key = evt.getKeyCode();
+       switch (key){
+           
+           case KeyEvent.VK_LEFT: case KeyEvent.VK_RIGHT: controller.stopHor(); break;
+           case KeyEvent.VK_UP: case KeyEvent.VK_DOWN: controller.stopVer(); break;
+       }
+    }
+    
     
     public Model getModel(){
         return model;
